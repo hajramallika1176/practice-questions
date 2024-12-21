@@ -22,3 +22,40 @@ const filterLongWords = function (words) {
 };
 
 console.log(filterLongWords(["apple", "banana", "kiwi", "grape"]));
+
+//*********** */     filterAdults  ********************//
+
+// people older than 30 [{name: "Alice", age: 25}, {name: "Bob", age: 35}] => [{name: "Bob", age: 35}]
+
+const isPersonOlderThan30 = function (data) {
+  return data.age > 30;
+};
+
+const filterAdults = function (people) {
+  return people.filter(isPersonOlderThan30);
+};
+
+console.log(filterAdults([{ name: "Alice", age: 25 }, { name: "Bob", age: 35 }]));
+
+//*********** */     filterActiveUsers  ********************//
+
+// active users [{username: "alice", active: true}, {username: "bob", active: false}] => [{username: "alice", active: true}]
+const isUserActive = function (uderDetails) {
+  return uderDetails.active;
+};
+
+const filterActiveUsers = function (users) {
+  return users.filter(isUserActive);
+};
+
+console.log(filterActiveUsers([{ username: "alice", active: true }, { username: "bob", active: false }]));
+
+//*********** */   filterNumbersGreaterThanTen  ********************//
+
+// numbers greater than 10 [5, 12, 7, 18, 3] => [12, 18]
+
+const filterNumbersGreaterThanTen = function (numbers) {
+  return numbers.filter(function (number) { return number > 10; });
+};
+
+console.log(filterNumbersGreaterThanTen([5, 12, 7, 18, 3]));
