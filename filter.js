@@ -155,32 +155,50 @@ console.log(filterStudentsWithAllSubjectsPassed(allStudentsDetails));
 //*********** */ 14   filterBirthdaysThisMonth   ********************//
 
 // people whose birthday is this month [{name: "Alice", birthDate: "2024-12-01"}, {name: "Bob", birthDate: "2024-11-01"}] => [{name: "Alice", birthDate: "2024-12-01"}]
-const data = [{ name: "Alice", birthDate: "2024-12-01" }, { name: "Bob", birthDate: "2024-11-01" }];
+
+const peopleData = [{ name: "Alice", birthDate: "2024-12-01" }, { name: "Bob", birthDate: "2024-11-01" }];
 
 const isThisMonth = function (date) {
-  console.log(date)
   return function (person) {
-    const testMonth = person.birthDate.slice(5,7);
-    return  date. month === testMonth ;
+    const testMonth = +person.birthDate.slice(5, 7);
+    return date.month === testMonth;
   };
 };
 
 const filterBirthdaysThisMonth = function (people) {
-  const todayDate = { year: 2024, month: 12, day: 21 };
-  const isPersonDOBIsThisMonth = isThisMonth(todayDate);
+  const currentDate = { year: 2024, month: 12, day: 21 };
+  const isPersonDOBIsThisMonth = isThisMonth(currentDate);
 
   return people.filter(isPersonDOBIsThisMonth);
 };
 
-console.log(filterBirthdaysThisMonth(data));
+console.log(filterBirthdaysThisMonth(peopleData));
 
-//*********** */  filterRecentOrders ********************//
+
+//*********** */  15 filterHighValueOrders ********************//
 
 // orders that exceed the average order value [{orderId: 1, amount: 20}, {orderId: 2, amount: 50}, {orderId: 3, amount: 10}] => [{orderId: 2, amount: 50}]
-const filterHighValueOrders = function (orders) { };
 
+const allOrders = [{ orderId: 1, amount: 20 }, { orderId: 2, amount: 50 }, { orderId: 3, amount: 10 }];
 
-//*********** */  filterRecentOrders ********************//
+const addOrdersValue = function (initialValue, order) {
+  return initialValue += order.amount;
+};
+
+const getAverage = function (dividend, divisor) {
+  return Math.ceil(dividend / divisor);
+};
+
+const filterHighValueOrders = function (orders) {
+  const sumOfOrderValue = orders.reduce(addOrdersValue, 0);
+  const avgOfOrderValue = getAverage(sumOfOrderValue, orders.length);
+
+  return orders.filter(function (order) { return order.amount > avgOfOrderValue; });
+};
+
+console.log(filterHighValueOrders(allOrders));
+
+//*********** */ 16 filterRecentOrders ********************//
 
 // books with reviews higher than the average rating [{title: "Book 1", rating: 4}, {title: "Book 2", rating: 5}, {title: "Book 3", rating: 3}] => [{title: "Book 2", rating: 5}]
 const filterTopRatedBooks = function (books) { };
