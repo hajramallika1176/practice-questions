@@ -331,43 +331,111 @@ const addPunctuation = function (messages, punctuations) { };
 // [{name: "Alice", age: 30}, {name: "Bob", age: 25}] => ["Hello Alice!", "Hello Bob!"]
 const greetUsers = function (users) { };
 
+////////////****** ~~~~~~ applySalesTax ****** ~~~~~~ \\\\\\\\\\\\
+
 // given two arrays, one of people’s names and one of ages, create closures to generate a message indicating whether each person is an adult (18 or older), then use flatMap to apply the closure to each person
 // ["Alice", "Bob"], [20, 17] => ["Alice is an adult", "Bob is not an adult"]
 const checkAdultStatus = function (names, ages) { };
 
+////////////****** ~~~~~~ sapplySalesTax ****** ~~~~~~ \\\\\\\\\\\\
+
 // given an array of product objects, each containing `name` and `price`, create closures to apply a sales tax (e.g., 10%) to the price, then use flatMap to calculate the price with tax for each product
 // [{name: "Shirt", price: 20}, {name: "Shoes", price: 50}] => [22, 55]
 const applySalesTax = function (products) { };
+
+////////////****** ~~~~~~ getUserPostTitles ****** ~~~~~~ \\\\\\\\\\\\
 
 // given an array of user objects with `name` and `posts`, return an array of objects where each object contains the user's name and an array of post titles
 // [{name: "Alice", posts: [{title: "Post 1"}, {title: "Post 2"}]}, {name: "Bob", posts: [{title: "Post 3"}]}] 
 // => [{name: "Alice", posts: ["Post 1", "Post 2"]}, {name: "Bob", posts: ["Post 3"]}]
 const getUserPostTitles = function (users) { };
 
+////////////****** ~~~~~~ formatProductTags ****** ~~~~~~ \\\\\\\\\\\\
+
 // given an array of products, where each product contains a `name`, `price`, and `tags` array, return a new array of products where each product contains its name and an array of uppercased tags
 // [{name: "Shirt", price: 20, tags: ["cotton", "summer"]}, {name: "Shoes", price: 50, tags: ["leather", "winter"]}] 
 // => [{name: "Shirt", tags: ["COTTON", "SUMMER"]}, {name: "Shoes", tags: ["LEATHER", "WINTER"]}]
 const formatProductTags = function (products) { };
+
+////////////****** ~~~~~~ getCategoryItems ****** ~~~~~~ \\\\\\\\\\\\
 
 // given an array of categories where each category has a `categoryName` and `items` array, return a new array where each item is an object with the category name and an array of item names
 // [{categoryName: "Fruits", items: [{name: "Apple"}, {name: "Banana"}]}, {categoryName: "Vegetables", items: [{name: "Carrot"}]}] 
 // => [{categoryName: "Fruits", items: ["Apple", "Banana"]}, {categoryName: "Vegetables", items: ["Carrot"]}]
 const getCategoryItems = function (categories) { };
 
+////////////****** ~~~~~~ summarizeOrderProducts ****** ~~~~~~ \\\\\\\\\\\\
+
 // given an array of order objects with `orderId` and `products`, where each product has a `name` and `quantity`, return an array of orders, where each order contains its `orderId` and an array of product names, each with the quantity
 // [{orderId: 1, products: [{name: "Laptop", quantity: 1}, {name: "Mouse", quantity: 2}]}, {orderId: 2, products: [{name: "Keyboard", quantity: 1}]}]
 // => [{orderId: 1, products: ["Laptop x1", "Mouse x2"]}, {orderId: 2, products: ["Keyboard x1"]}]
-const summarizeOrderProducts = function (orders) { };
+
+const orderDetails = [{ orderId: 1, products: [{ name: "Laptop", quantity: 1 }, { name: "Mouse", quantity: 2 }] }, { orderId: 2, products: [{ name: "Keyboard", quantity: 1 }] }];
+
+const getQuantityInformation = function (product) {
+  return product.name + " x" + product.quantity;
+};
+
+const getProductWithQuantity = function (products) {
+  return products.map(function (product) { return getQuantityInformation(product); });
+};
+
+const summarizeOrderProducts = function (orders) {
+  return orders.map(function (order) {
+    order.products = getProductWithQuantity(order.products);
+    return order;
+  });
+};
+
+console.log(summarizeOrderProducts(orderDetails));
+
+////////////****** ~~~~~~ getStudentCourses ****** ~~~~~~ \\\\\\\\\\\\
 
 // given an array of students, each with a `name` and a `courses` array, return a new array of objects, where each object contains the student's name and an array of their course names in uppercase
 // [{name: "Alice", courses: [{courseName: "Math"}, {courseName: "Science"}]}, {name: "Bob", courses: [{courseName: "English"}]}]
 // => [{name: "Alice", courses: ["MATH", "SCIENCE"]}, {name: "Bob", courses: ["ENGLISH"]}]
-const getStudentCourses = function (students) { };
+
+const allStudentDetails = [{ name: "Alice", courses: [{ courseName: "Math" }, { courseName: "Science" }] }, { name: "Bob", courses: [{ courseName: "English" }] }];
+
+const getAllCoureseName = function (courses) {
+  return courses.map(function (cours) { return cours.courseName; });
+};
+
+const getStudentCourses = function (students) {
+  return students.map(function (student) {
+    student.courses = getAllCoureseName(student.courses);
+    return student;
+  });
+
+};
+
+console.log(getStudentCourses(allStudentDetails));
+
+////////////****** ~~~~~~ summarizeBookChapters ****** ~~~~~~ \\\\\\\\\\\\
 
 // given an array of books, each with a `title` and `chapters`, where each chapter has a `title` and a `pageCount`, return an array of books, each containing the book's title and an array of chapter titles along with their page counts
 // [{title: "Book 1", chapters: [{title: "Chapter 1", pageCount: 10}, {title: "Chapter 2", pageCount: 20}]}, {title: "Book 2", chapters: [{title: "Chapter 1", pageCount: 15}]}]
 // => [{title: "Book 1", chapters: ["Chapter 1: 10 pages", "Chapter 2: 20 pages"]}, {title: "Book 2", chapters: ["Chapter 1: 15 pages"]}]
-const summarizeBookChapters = function (books) { };
+
+const groupOfBooks = [{ title: "Book 1", chapters: [{ title: "Chapter 1", pageCount: 10 }, { title: "Chapter 2", pageCount: 20 }] }, { title: "Book 2", chapters: [{ title: "Chapter 1", pageCount: 15 }] }];
+
+const getString = function (chapter) {
+  return chapter.title + ": " + chapter.pageCount + "pages";
+};
+
+const getChapterInformation = function (chapters) {
+  return chapters.map(function (chapter) { return getString(chapter); });
+};
+
+const summarizeBookChapters = function (books) {
+  return books.map(function (book) {
+    book.chapters = getChapterInformation(book.chapters);
+    return book;
+  });
+
+};
+
+console.log(summarizeBookChapters(groupOfBooks));
 
 ////////////****** ~~~~~~ getEventAttendance ****** ~~~~~~ \\\\\\\\\\\\
 
@@ -383,8 +451,9 @@ const getFullName = function (attendees) {
 
 const getEventAttendance = function (events) {
   return events.map(function (event) {
-    event.attendees = getFullName(event.attendees);
+    event.attendees = getChapterInformation(event.attendees);
     return event;
   });
+
 };
-console.log(getEventAttendees(allEvents));
+console.log(getEventAttendance(allEvents));
