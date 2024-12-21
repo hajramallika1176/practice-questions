@@ -1,21 +1,24 @@
 //*********** */  1  filterEvenNumbers  ********************//
 
+// even numbers [1, 2, 3, 4, 5] => [2, 4]
+
 const isEven = function (number) {
   return (number & 1) === 0;
 };
 
-// even numbers [1, 2, 3, 4, 5] => [2, 4]
 const filterEvenNumbers = function (numbers) {
   return numbers.filter(isEven);
 };
+
 console.log(filterEvenNumbers([1, 2, 3, 4, 5]));
 
 //*********** */  2   filterLongWords    ********************//
 
+// words with more than 5 letters ["apple", "banana", "kiwi", "grape"] => ["banana"]
+
 const isWordMoreThan5Letters = function (word) {
   return word.length > 5;
 };
-// words with more than 5 letters ["apple", "banana", "kiwi", "grape"] => ["banana"]
 
 const filterLongWords = function (words) {
   return words.filter(isWordMoreThan5Letters);
@@ -40,6 +43,7 @@ console.log(filterAdults([{ name: "Alice", age: 25 }, { name: "Bob", age: 35 }])
 //*********** */  4   filterActiveUsers  ********************//
 
 // active users [{username: "alice", active: true}, {username: "bob", active: false}] => [{username: "alice", active: true}]
+
 const isUserActive = function (uderDetails) {
   return uderDetails.active;
 };
@@ -60,7 +64,6 @@ const filterNumbersGreaterThanTen = function (numbers) {
 
 console.log(filterNumbersGreaterThanTen([5, 12, 7, 18, 3]));
 
-
 //*********** */ 6  filterLongBooks  ********************//*
 
 // books with more than 200 pages [{title: "Book 1", pages: 150}, {title: "Book 2", pages: 250}] => [{title: "Book 2", pages: 250}]
@@ -68,8 +71,8 @@ console.log(filterNumbersGreaterThanTen([5, 12, 7, 18, 3]));
 const filterLongBooks = function (books) {
   return books.filter(function (book) { return book.pages > 200; });
 };
-console.log(filterLongBooks([{ title: "Book 1", pages: 150 }, { title: "Book 2", pages: 250 }]));
 
+console.log(filterLongBooks([{ title: "Book 1", pages: 150 }, { title: "Book 2", pages: 250 }]));
 
 //*********** */ 7  filterIncompleteProfiles ********************//
 
@@ -88,6 +91,7 @@ console.log(filterIncompleteProfiles([{ username: "alice", profileComplete: true
 const filterHighGrades = function (students) {
   return students.filter(function (student) { return student.grade > 80; });
 };
+
 console.log(filterHighGrades([{ name: "John", grade: 75 }, { name: "Jane", grade: 85 }]));
 
 //*********** */ 9 filterInStockProducts ********************//
@@ -100,7 +104,6 @@ const filterInStockProducts = function (products) {
 
 console.log(filterInStockProducts([{ product: "apple", inStock: true }, { product: "banana", inStock: false }]));
 
-
 //*********** */  10 filterRecentOrders ********************//
 
 // orders placed in the last 30 days [{orderDate: "2024-11-01"}, {orderDate: "2024-12-01"}] => [{orderDate: "2024-12-01"}]
@@ -110,6 +113,7 @@ const filterRecentOrders = function (orders) { };
 //*********** */  11 filterBelowAveragePrice ********************//
 
 // products with a price lower than the average [{name: "item1", price: 10}, {name: "item2", price: 20}, {name: "item3", price: 5}] => [{name: "item1", price: 10}, {name: "item3", price: 5}]
+
 const addPrise = function (initialValue, product) {
   return initialValue += product.price;
 };
@@ -123,17 +127,13 @@ const filterBelowAveragePrice = function (products) {
 
 console.log(filterBelowAveragePrice([{ name: "item1", price: 10 }, { name: "item2", price: 20 }, { name: "item3", price: 5 }]));
 
-
 //*********** */ 12  filterRecentActiveUsers  ********************//
 
 // active users who posted in the last 7 days [{username: "alice", lastPostDate: "2024-12-01", active: true}, {username: "bob", lastPostDate: "2024-11-20", active: true}] => [{username: "alice", lastPostDate: "2024-12-01", active: true}]
 
-
 const filterRecentActiveUsers = function (users) { };
 
-
 console.log(filterRecentActiveUsers([{ username: "alice", lastPostDate: "2024-12-01", active: true }, { username: "bob", lastPostDate: "2024-11-20", active: true }]));
-
 
 //*********** */ 13 filterRecentOrders ********************//
 
@@ -150,7 +150,6 @@ const filterStudentsWithAllSubjectsPassed = function (students) {
 };
 
 console.log(filterStudentsWithAllSubjectsPassed(allStudentsDetails));
-
 
 //*********** */ 14   filterBirthdaysThisMonth   ********************//
 
@@ -173,7 +172,6 @@ const filterBirthdaysThisMonth = function (people) {
 };
 
 console.log(filterBirthdaysThisMonth(peopleData));
-
 
 //*********** */  15 filterHighValueOrders ********************//
 
@@ -198,13 +196,36 @@ const filterHighValueOrders = function (orders) {
 
 console.log(filterHighValueOrders(allOrders));
 
-//*********** */ 16 filterRecentOrders ********************//
+//*********** */ 16 filterTopRatedBooks ********************//
 
 // books with reviews higher than the average rating [{title: "Book 1", rating: 4}, {title: "Book 2", rating: 5}, {title: "Book 3", rating: 3}] => [{title: "Book 2", rating: 5}]
-const filterTopRatedBooks = function (books) { };
+const allBooks = [{ title: "Book 1", rating: 4 }, { title: "Book 2", rating: 5 }, { title: "Book 3", rating: 3 }];
+
+const filterTopRatedBooks = function (books) {
+  const sumOfBookRating = books.reduce(function (initialValue, book) { return initialValue += book.rating; }, 0);
+
+  const averageOfRating = getAverage(sumOfBookRating, books.length);
+
+  return books.filter(function (book) { return book.rating > averageOfRating; });
+};
+
+console.log(filterTopRatedBooks(allBooks));
+
+//*********** */ 17 filterHighSalaryEmployees  ********************//
 
 // employees whose salary is higher than the department average [{name: "Alice", salary: 5000, department: "HR"}, {name: "Bob", salary: 7000, department: "HR"}, {name: "Charlie", salary: 4000, department: "IT"}] => [{name: "Bob", salary: 7000, department: "HR"}]
-const filterHighSalaryEmployees = function (employees) { };
+
+const allEmployeesDetails = [{ name: "Alice", salary: 5000, department: "HR" }, { name: "Bob", salary: 7000, department: "HR" }, { name: "Charlie", salary: 4000, department: "IT" }];
+
+const filterHighSalaryEmployees = function (employees) {
+  const sumOfSalary = employees.reduce(function (initialValue, employee) { return initialValue += employee.salary; }, 0);
+
+  const AverageOfSalary = getAverage(sumOfSalary, employees.length);
+
+  return employees.filter(function (employee) { return employee.salary > AverageOfSalary; });
+};
+
+console.log(filterHighSalaryEmployees(allEmployeesDetails));
 
 // cities with a population higher than the median [{name: "City A", population: 2000}, {name: "City B", population: 5000}, {name: "City C", population: 3000}] => [{name: "City B", population: 5000}]
 const filterCitiesAboveMedianPopulation = function (cities) { };
