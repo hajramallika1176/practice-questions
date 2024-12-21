@@ -369,7 +369,7 @@ const getStudentCourses = function (students) { };
 // => [{title: "Book 1", chapters: ["Chapter 1: 10 pages", "Chapter 2: 20 pages"]}, {title: "Book 2", chapters: ["Chapter 1: 15 pages"]}]
 const summarizeBookChapters = function (books) { };
 
-////////////****** ~~~~~~ getEventAttendees ****** ~~~~~~ \\\\\\\\\\\\
+////////////****** ~~~~~~ getEventAttendance ****** ~~~~~~ \\\\\\\\\\\\
 
 // given an array of events, where each event has a `name` and an array of `attendees`, where each attendee has a `firstName` and `lastName`, return an array of events where each event contains the event name and an array of full names of attendees
 // [{name: "Concert", attendees: [{firstName: "John", lastName: "Doe"}, {firstName: "Jane", lastName: "Smith"}]}, {name: "Conference", attendees: [{firstName: "Bob", lastName: "Brown"}]}]
@@ -381,7 +381,7 @@ const getFullName = function (attendees) {
   return attendees.map(function (person) { return person.firstName + " " + person.lastName; });
 };
 
-const getEventAttendees = function (events) {
+const getEventAttendance = function (events) {
   return events.map(function (event) {
     event.attendees = getFullName(event.attendees);
     return event;
