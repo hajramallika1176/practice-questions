@@ -3,13 +3,13 @@
 // sumOf([1, 2, 3, 4]) => 10
 const sumInputs = [1, 2, 3, 4];
 
-const getSumOfElement = function (sum, element) {
+const getSumOfElements = function (sum, element) {
   const sumOfElements = sum;
   return sumOfElements + element;
 };
 
 const sumOf = function (numbers) {
-  return numbers.reduce(getSumOfElement, 0);
+  return numbers.reduce(getSumOfElements, 0);
 };
 
 console.log(sumOf(sumInputs));
