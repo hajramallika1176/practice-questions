@@ -3,13 +3,13 @@
 // sumOf([1, 2, 3, 4]) => 10
 const sumInputs = [1, 2, 3, 4];
 
-const getSumOfElements = function (sum, element) {
+const getSumOfElement = function (sum, element) {
   const sumOfElements = sum;
   return sumOfElements + element;
 };
 
 const sumOf = function (numbers) {
-  return numbers.reduce(getSumOfElements, 0);
+  return numbers.reduce(getSumOfElement, 0);
 };
 
 console.log(sumOf(sumInputs));
@@ -45,41 +45,104 @@ console.log(averageOf(elementsForAverage));
 //@@@@@@@@@@@@@@   #########  minOfElements   ######### @@@@@@@@@@@@@@\\
 
 
-// minOf([3, 1, 4, 1, 5, 9, 2]) => 1
-const minOf = function (numbers) { };
+// minOf([3, 1, 4, 1, 5,0, 9, 2]) => 0
+const valuesForMin = [3, 1, 4, 0, 5, 9, 5];
 
-//@@@@@@@@@@@@@@   #########  productOfElements   ######### @@@@@@@@@@@@@@\\
+const getMinElement = function (minValue, element) {
+  const currentMinValue = minValue;
+  return currentMinValue < element ? currentMinValue : element;
+};
+
+const minOf = function (numbers) {
+  return numbers.reduce(getMinElement, Infinity);
+};
+
+console.log(minOf(valuesForMin));
+
+//@@@@@@@@@@@@@@   #########  maxOfElements   ######### @@@@@@@@@@@@@@\\
 
 
-// maxOf([3, 1, 4, 1, 5, 9, 2]) => 9
-const maxOf = function (numbers) { };
+// maxOf([3, 1, 4, 1, 5, 9, 2,10]) => 10
+const valuesForMax = [3, 1, 4, 10, 5, 9, 5];
 
-//@@@@@@@@@@@@@@   #########  productOfElements   ######### @@@@@@@@@@@@@@\\
+const getMaxElement = function (maxValue, element) {
+  const currentMaxValue = maxValue;
+  return currentMaxValue > element ? currentMaxValue : element;
+};
 
+const maxOf = function (numbers) {
+  return numbers.reduce(getMaxElement, -Infinity);
+};
 
-// sumPositiveNumbers([1, -2, 3, -4]) => 4
-const sumPositiveNumbers = function (numbers) { };
+console.log(maxOf(valuesForMax));
 
-//@@@@@@@@@@@@@@   #########  productOfElements   ######### @@@@@@@@@@@@@@\\
+//@@@@@@@@@@@@@@   #########  sumPositiveNumbers   ######### @@@@@@@@@@@@@@\\
+
+// sumPositiveNumbers([1, -2, 3, -4,4]) => 8
+
+const listOfIntegers = [1, -2, 3, -4, 0, 4, -2];
+
+const isPositive = function (element) {
+  return element > -1;
+};
+
+const sumPositiveNumbers = function (numbers) {
+  return sumOf(numbers.filter(isPositive));
+};
+
+console.log(sumPositiveNumbers(listOfIntegers));
+
+//@@@@@@@@@@@@@@   #########  sumOfSquares  ######### @@@@@@@@@@@@@@\\
 
 
 // sumOfSquares([1, 2, 3, 4]) => 30
+const listOfElements = [1, 2, 3, 4];
 
-//@@@@@@@@@@@@@@   #########  productOfElements   ######### @@@@@@@@@@@@@@\\
+const getSquare = function (element) {
+  return Math.pow(element, 2);
+};
 
-const sumOfSquares = function (numbers) { };
+const sumOfSquares = function (numbers) {
+  const listOfSqureOfElement = numbers.map(getSquare);
 
-//@@@@@@@@@@@@@@   #########  productOfElements   ######### @@@@@@@@@@@@@@\\
+  return sumOf(listOfSqureOfElement);
+};
 
+console.log(sumOfSquares(listOfElements));
+
+
+//@@@@@@@@@@@@@@   #########  sumOfOddNumbers   ######### @@@@@@@@@@@@@@\\
 
 // sumOfOddNumbers([1, 2, 3, 4, 5]) => 9
-const sumOfOddNumbers = function (numbers) { };
+const elementsForSumOfOdd = [1, 2, 3, 4, 5, 7];
 
-//@@@@@@@@@@@@@@   #########  productOfElements   ######### @@@@@@@@@@@@@@\\
+const isOdd = function (element) {
+  return (element & 1) === 1;
+};
 
+const sumOfOddNumbers = function (numbers) {
+  return sumOf(numbers.filter(isOdd));
+};
+
+console.log(sumOfOddNumbers(elementsForSumOfOdd));
+
+//@@@@@@@@@@@@@@   #########  countNegativeNumbers  ######### @@@@@@@@@@@@@@\\
 
 // countNegativeNumbers([1, -2, 3, -4]) => 2
-const countNegativeNumbers = function (numbers) { };
+
+const elementsForCountNegativeNumber = [1, -2, 3, -4, -5, -10];
+
+const countNegativeNumber = function (count, element) {
+  let negativeCount = count;
+
+  return !isPositive(element) ? negativeCount + 1 : negativeCount;
+};
+
+const countNegativeNumbers = function (numbers) {
+  return numbers.reduce(countNegativeNumber, 0);
+};
+
+console.log(countNegativeNumbers(elementsForCountNegativeNumber));
 
 //@@@@@@@@@@@@@@   #########  productOfElements   ######### @@@@@@@@@@@@@@\\
 
