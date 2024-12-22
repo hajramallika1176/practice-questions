@@ -112,14 +112,20 @@ const filterRecentOrders = function (orders) { };
 
 const productsWithPrice = [{ name: "item1", price: 10 }, { name: "item2", price: 20 }, { name: "item3", price: 5 }];
 
+const getTotalPrice = function (totalPrice, productPrice) {
+  const currentPrice = totalPrice;
+  return currentPrice + productPrice;
+};
+
+const getProductPrice = function (product) {
+  return product.price;
+};
+
 const filterBelowAveragePrice = function (products) {
-  const SumOfPrise = products.reduce(function (initialValue, product) {
-    return initialValue += product.price;
-  }, 0);
+  const totalPrice = products.map(getProductPrice).reduce(getTotalPrice, 0);
+  const avgOfPrise = Math.ceil(totalPrice / products.length);
 
-  const avgOfPrise = Math.ceil(SumOfPrise / products.length);
-
-  return products.filter(function (product) { return product.price < avgOfPrise; });
+  return products.filter(function (product) { return getProductPrice(product) < avgOfPrise; });
 };
 
 console.log(filterBelowAveragePrice(productsWithPrice));
@@ -180,14 +186,20 @@ const getAverage = function (dividend, divisor) {
   return Math.ceil(dividend / divisor);
 };
 
-const filterHighValueOrders = function (orders) {
-  const sumOfOrderValue = orders.reduce(function (initialValue, order) {
-    return initialValue += order.amount;
-  }, 0);
+const getTotalAmount = function (totalAmount, orderAmount) {
+  const currentAmount = totalAmount;
+  return currentAmount + orderAmount;
+};
 
+const getOrderAmount = function (order) {
+  return order.amount;
+};
+
+const filterHighValueOrders = function (orders) {
+  const sumOfOrderValue = orders.map(getOrderAmount).reduce(getTotalAmount, 0);
   const avgOfOrderValue = getAverage(sumOfOrderValue, orders.length);
 
-  return orders.filter(function (order) { return order.amount > avgOfOrderValue; });
+  return orders.filter(function (order) { return getOrderAmount(order) > avgOfOrderValue; });
 };
 
 console.log(filterHighValueOrders(allOrders));
@@ -197,12 +209,21 @@ console.log(filterHighValueOrders(allOrders));
 // books with reviews higher than the average rating [{title: "Book 1", rating: 4}, {title: "Book 2", rating: 5}, {title: "Book 3", rating: 3}] => [{title: "Book 2", rating: 5}]
 const allBooks = [{ title: "Book 1", rating: 4 }, { title: "Book 2", rating: 5 }, { title: "Book 3", rating: 3 }];
 
+const getTotalRating = function (totalRating, bookRating) {
+  const sumOfRating = totalRating;
+  return sumOfRating + bookRating;
+};
+
+const getBooksRating = function (book) {
+  return book.rating;
+};
+
 const filterTopRatedBooks = function (books) {
-  const sumOfBookRating = books.reduce(function (initialValue, book) { return initialValue += book.rating; }, 0);
+  const sumOfBookRating = books.map(getBooksRating).reduce(getTotalRating, 0);
 
   const averageOfRating = getAverage(sumOfBookRating, books.length);
 
-  return books.filter(function (book) { return book.rating > averageOfRating; });
+  return books.filter(function (book) { return getBooksRating(book) > averageOfRating; });
 };
 
 console.log(filterTopRatedBooks(allBooks));
@@ -213,12 +234,21 @@ console.log(filterTopRatedBooks(allBooks));
 
 const allEmployeesDetails = [{ name: "Alice", salary: 5000, department: "HR" }, { name: "Bob", salary: 7000, department: "HR" }, { name: "Charlie", salary: 4000, department: "IT" }];
 
+const getSumOfEmployeesSalary = function (totalSalary, EmpSalary) {
+  const currentSumOfSalary = totalSalary;
+  return currentSumOfSalary + EmpSalary;
+};
+
+const getEmployeesSalary = function (employee) {
+  return employee.salary;
+};
+
 const filterHighSalaryEmployees = function (employees) {
-  const sumOfSalary = employees.reduce(function (initialValue, employee) { return initialValue += employee.salary; }, 0);
+  const sumOfSalary = employees.map(getEmployeesSalary).reduce(getSumOfEmployeesSalary, 0);
 
   const AverageOfSalary = getAverage(sumOfSalary, employees.length);
 
-  return employees.filter(function (employee) { return employee.salary > AverageOfSalary; });
+  return employees.filter(function (employee) { return getEmployeesSalary(employee) > AverageOfSalary; });
 };
 
 console.log(filterHighSalaryEmployees(allEmployeesDetails));
