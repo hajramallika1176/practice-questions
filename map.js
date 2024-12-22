@@ -377,14 +377,16 @@ const getQuantityInformation = function (product) {
 };
 
 const getProductWithQuantity = function (products) {
-  return products.map(function (product) { return getQuantityInformation(product); });
+  return products.map(getQuantityInformation);
+};
+
+const getSummarizeProductQuantity = function (order) {
+  order.products = getProductWithQuantity(order.products);
+  return order;
 };
 
 const summarizeOrderProducts = function (orders) {
-  return orders.map(function (order) {
-    order.products = getProductWithQuantity(order.products);
-    return order;
-  });
+  return orders.map(getSummarizeProductQuantity);
 };
 
 console.log(summarizeOrderProducts(orderDetails));
@@ -397,15 +399,21 @@ console.log(summarizeOrderProducts(orderDetails));
 
 const allStudentDetails = [{ name: "Alice", courses: [{ courseName: "Math" }, { courseName: "Science" }] }, { name: "Bob", courses: [{ courseName: "English" }] }];
 
+const getCoursName = function (cours) {
+  return cours.courseName;
+};
+
 const getAllCoureseName = function (courses) {
-  return courses.map(function (cours) { return cours.courseName; });
+  return courses.map(getCoursName);
+};
+
+const getCoursesNameTogather = function (student) {
+  student.courses = getAllCoureseName(student.courses);
+  return student;
 };
 
 const getStudentCourses = function (students) {
-  return students.map(function (student) {
-    student.courses = getAllCoureseName(student.courses);
-    return student;
-  });
+  return students.map(getCoursesNameTogather);
 
 };
 
@@ -419,20 +427,21 @@ console.log(getStudentCourses(allStudentDetails));
 
 const groupOfBooks = [{ title: "Book 1", chapters: [{ title: "Chapter 1", pageCount: 10 }, { title: "Chapter 2", pageCount: 20 }] }, { title: "Book 2", chapters: [{ title: "Chapter 1", pageCount: 15 }] }];
 
-const getString = function (chapter) {
+const chapterSize = function (chapter) {
   return chapter.title + ": " + chapter.pageCount + "pages";
 };
 
 const getChapterInformation = function (chapters) {
-  return chapters.map(function (chapter) { return getString(chapter); });
+  return chapters.map(chapterSize);
+};
+
+const getSummarizeChapter = function (book) {
+  book.chapters = getChapterInformation(book.chapters);
+  return book;
 };
 
 const summarizeBookChapters = function (books) {
-  return books.map(function (book) {
-    book.chapters = getChapterInformation(book.chapters);
-    return book;
-  });
-
+  return books.map(getSummarizeChapter);
 };
 
 console.log(summarizeBookChapters(groupOfBooks));
@@ -445,15 +454,21 @@ console.log(summarizeBookChapters(groupOfBooks));
 
 const allEvents = [{ name: "Concert", attendees: [{ firstName: "John", lastName: "Doe" }, { firstName: "Jane", lastName: "Smith" }] }, { name: "Conference", attendees: [{ firstName: "Bob", lastName: "Brown" }] }];
 
+const getNameAsAString = function (person) {
+  return person.firstName + " " + person.lastName;
+};
+
 const getFullName = function (attendees) {
-  return attendees.map(function (person) { return person.firstName + " " + person.lastName; });
+  return attendees.map(getNameAsAString);
 };
 
-const getEventAttendance = function (events) {
-  return events.map(function (event) {
-    event.attendees = getChapterInformation(event.attendees);
-    return event;
-  });
-
+const getAttendance = function (event) {
+  event.attendees = getFullName(event.attendees);
+  return event;
 };
-console.log(getEventAttendance(allEvents));
+
+const getEventAttendees = function (events) {
+  return events.map(getAttendance);
+};
+
+console.log(getEventAttendees(allEvents));
