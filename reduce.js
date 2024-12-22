@@ -317,3 +317,5 @@ const findMinMax = function (numbers) { };
 
 // sumByCategory([{ category: 'A', value: 10 }, { category: 'B', value: 20 }, { category: 'A', value: 30 }]) => { A: 40, B: 20 }
 const sumByCategory = function (items) { };
+
+//added new line
