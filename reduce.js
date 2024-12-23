@@ -1,5 +1,6 @@
 //@@@@@@@@@@@@@@   #########   1 sumOfElements   ######### @@@@@@@@@@@@@@\\
 
+
 // sumOf([1, 2, 3, 4]) => 10
 const sumInputs = [1, 2, 3, 4];
 
@@ -14,7 +15,7 @@ const sumOf = function (numbers) {
 
 console.log(sumOf(sumInputs));
 
-//@@@@@@@@@@@@@@   #########  2 productOfElements   ######### @@@@@@@@@@@@@@\\
+//@@@@@@@@@@@@@@   #########  productOfElements   ######### @@@@@@@@@@@@@@\\
 
 // productOf([1, 2, 3, 4]) => 24
 const valuesToMultiply = [1, 2, 3, 4];
@@ -30,7 +31,7 @@ const productOf = function (numbers) {
 
 console.log(productOf(valuesToMultiply));
 
-//@@@@@@@@@@@@@@   ######### 3 averageOf  ######### @@@@@@@@@@@@@@\\
+//@@@@@@@@@@@@@@   #########  averageOf  ######### @@@@@@@@@@@@@@\\
 
 // averageOf([1, 2, 3, 4, 5]) => 3
 const elementsForAverage = [1, 2, 3, 4, 5];
@@ -42,7 +43,7 @@ const averageOf = function (numbers) {
 
 console.log(averageOf(elementsForAverage));
 
-//@@@@@@@@@@@@@@  4 #########  minOfElements   ######### @@@@@@@@@@@@@@\\
+//@@@@@@@@@@@@@@   #########  minOfElements   ######### @@@@@@@@@@@@@@\\
 
 
 // minOf([3, 1, 4, 1, 5,0, 9, 2]) => 0
@@ -59,7 +60,7 @@ const minOf = function (numbers) {
 
 console.log(minOf(valuesForMin));
 
-//@@@@@@@@@@@@@@ 5  #########  maxOfElements   ######### @@@@@@@@@@@@@@\\
+//@@@@@@@@@@@@@@   #########  maxOfElements   ######### @@@@@@@@@@@@@@\\
 
 
 // maxOf([3, 1, 4, 1, 5, 9, 2,10]) => 10
@@ -76,7 +77,7 @@ const maxOf = function (numbers) {
 
 console.log(maxOf(valuesForMax));
 
-//@@@@@@@@@@@@@@ 6  #########  sumPositiveNumbers   ######### @@@@@@@@@@@@@@\\
+//@@@@@@@@@@@@@@   #########  sumPositiveNumbers   ######### @@@@@@@@@@@@@@\\
 
 // sumPositiveNumbers([1, -2, 3, -4,4]) => 8
 
@@ -92,7 +93,7 @@ const sumPositiveNumbers = function (numbers) {
 
 console.log(sumPositiveNumbers(listOfIntegers));
 
-//@@@@@@@@@@@@@@  7 #########  sumOfSquares  ######### @@@@@@@@@@@@@@\\
+//@@@@@@@@@@@@@@   #########  sumOfSquares  ######### @@@@@@@@@@@@@@\\
 
 
 // sumOfSquares([1, 2, 3, 4]) => 30
@@ -111,7 +112,7 @@ const sumOfSquares = function (numbers) {
 console.log(sumOfSquares(listOfElements));
 
 
-//@@@@@@@@@@@@@@  8 #########  sumOfOddNumbers   ######### @@@@@@@@@@@@@@\\
+//@@@@@@@@@@@@@@   #########  sumOfOddNumbers   ######### @@@@@@@@@@@@@@\\
 
 // sumOfOddNumbers([1, 2, 3, 4, 5]) => 9
 const elementsForSumOfOdd = [1, 2, 3, 4, 5, 7];
@@ -126,7 +127,7 @@ const sumOfOddNumbers = function (numbers) {
 
 console.log(sumOfOddNumbers(elementsForSumOfOdd));
 
-//@@@@@@@@@@@@@@ 9  #########  countNegativeNumbers  ######### @@@@@@@@@@@@@@\\
+//@@@@@@@@@@@@@@   #########  countNegativeNumbers  ######### @@@@@@@@@@@@@@\\
 
 // countNegativeNumbers([1, -2, 3, -4]) => 2
 
@@ -144,7 +145,7 @@ const countNegativeNumbers = function (numbers) {
 
 console.log(countNegativeNumbers(elementsForCountNegativeNumber));
 
-//@@@@@@@@@@@@@@  10 #########  findSumOfEvenSquares   ######### @@@@@@@@@@@@@@\\
+//@@@@@@@@@@@@@@   #########  findSumOfEvenSquares   ######### @@@@@@@@@@@@@@\\
 
 
 // findSumOfEvenSquares([1, 2, 3, 4]) => 20
@@ -161,7 +162,7 @@ const findSumOfEvenSquares = function (numbers) {
 
 console.log(findSumOfEvenSquares(elementsForSumOfEvenSquares));
 
-//@@@@@@@@@@@@@@   ######### 11 concatenateWords  ######### @@@@@@@@@@@@@@\\
+//@@@@@@@@@@@@@@   #########  concatenateWords  ######### @@@@@@@@@@@@@@\\
 
 // concatenateWords(["hello", "world"]) => "helloworld"
 
@@ -179,7 +180,7 @@ const concatenateWords = function (words) {
 
 console.log(concatenateWords(wordSet));
 
-//@@@@@@@@@@@@@@   ######### 12 longestWord   ######### @@@@@@@@@@@@@@\\
+//@@@@@@@@@@@@@@   #########  longestWord   ######### @@@@@@@@@@@@@@\\
 
 // longestWord(["apple", "banana", "cherry", "kiwi"]) => "banana"
 const wordsArrayForMaxWord = ["apple", "banana", "cherry", "kiwi"];
@@ -195,37 +196,37 @@ const longestWord = function (words) {
 
 console.log(longestWord(wordsArrayForMaxWord));
 
-//@@@@@@@@@@@@@@   ######### 13 shortestWord  ######### @@@@@@@@@@@@@@\\
+//@@@@@@@@@@@@@@   #########  shortestWord  ######### @@@@@@@@@@@@@@\\
 
 
 // shortestWord(["apple", "banana", "cherry", "kiwi"]) => "kiwi"
 const shortestWord = function (words) { };
 
-//@@@@@@@@@@@@@@   ######### 14 productOfElements   ######### @@@@@@@@@@@@@@\\
+//@@@@@@@@@@@@@@   #########  productOfElements   ######### @@@@@@@@@@@@@@\\
 
 
 // joinWithComma(["apple", "banana", "cherry"]) => "apple,banana,cherry"
 const joinWithComma = function (words) { };
 
-//@@@@@@@@@@@@@@   ######### 15 productOfElements   ######### @@@@@@@@@@@@@@\\
+//@@@@@@@@@@@@@@   #########  productOfElements   ######### @@@@@@@@@@@@@@\\
 
 
 // reverseWords(["hello", "world"]) => "world hello"
 const reverseWords = function (words) { };
 
-//@@@@@@@@@@@@@@   ######### 16 productOfElements   ######### @@@@@@@@@@@@@@\\
+//@@@@@@@@@@@@@@   #########  productOfElements   ######### @@@@@@@@@@@@@@\\
 
 
 // joinWordsWithSpace(["apple", "banana", "cherry"]) => "apple banana cherry"
 const joinWordsWithSpace = function (words) { };
 
-//@@@@@@@@@@@@@@   ######### 17 productOfElements   ######### @@@@@@@@@@@@@@\\
+//@@@@@@@@@@@@@@   #########  productOfElements   ######### @@@@@@@@@@@@@@\\
 
 
 // concatenateNames(["John", "Jane", "Doe"]) => "JohnJaneDoe"
 const concatenateNames = function (names) { };
 
-//@@@@@@@@@@@@@@   ######### 18 productOfElements   ######### @@@@@@@@@@@@@@\\
+//@@@@@@@@@@@@@@   #########  productOfElements   ######### @@@@@@@@@@@@@@\\
 
 
 // countVowelsInWords(["hello", "world"]) => "eoo"
@@ -352,3 +353,4 @@ const findMinMax = function (numbers) { };
 const sumByCategory = function (items) { };
 
 //added new line 1
+
